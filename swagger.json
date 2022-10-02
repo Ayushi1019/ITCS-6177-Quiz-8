@@ -1,0 +1,235 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Assignment - 8",
+    "description": "Quiz 8 api endpoints",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "147.182.211.83:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Agents",
+      "description": "API for agents in the system"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/edit_agent_name/{agent_code}":{
+      "patch": {
+        "summary": "Update agent_name by given AGENT_CODE",
+        "tags": [
+          "Agents"
+        ],
+        "parameters": [
+          {
+            "name": "agent_code",
+            "in": "path",
+            "required": true,
+            "description": "Code of agent that we want to find to delete",
+            "type": "string"
+          },
+          {
+              "name": "body",
+              "in": "body",
+              "description": "Patch Update Agent",
+              "schema": {
+                  "$ref": "#/definitions/PatchPost"
+              }
+          }
+      ],
+        "responses": {
+          "200": {
+            "description": "Agent added"
+          },
+          "202":{
+            "description": "Agent updated"
+          }
+        }
+      }
+    },
+    "/agent": {
+      "post": {
+        "tags": [
+          "Agents"
+        ],
+        "description": "Create new agent in system",
+        "parameters": [
+          {
+              "name": "body",
+              "in": "body",
+              "description": "Add Agent",
+              "required": true,
+              "schema": {
+                  "$ref": "#/definitions/Post"
+              }
+          }
+      ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent added"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update agent with given AGENT_CODE",
+        "tags": [
+          "Agents"
+        ],
+        "parameters": [
+          {
+              "name": "body",
+              "in": "body",
+              "description": "Update Agent",
+              "required": true,
+              "schema": {
+                  "$ref": "#/definitions/Post"
+              }
+          }
+      ],
+        "responses": {
+          "200": {
+            "description": "Agent added"
+          },
+          "202":{
+            "description": "Agent updated"
+          }
+        }
+      }
+    },
+    "/agent/{agent_code}":{
+      "delete": {
+        "parameters": [
+          {
+            "name": "agent_code",
+            "in": "path",
+            "required": true,
+            "description": "Code of agent that we want to find to delete",
+            "type": "string"
+          }
+        ],
+        "summary": "Delete agent with given ID",
+        "tags": [
+          "Agents"
+        ],
+        "responses": {
+          "204": {
+            "description": "Agents deleted"
+          }
+        }
+    }
+    },
+    "/orders": {
+      "get": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Get all orders in system",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+    },
+    "/orders_by_agent_code": {
+      "get": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Get all orders by agent code in system",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+    },
+    "/usa_orders": {
+      "get": {
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Get all USA orders in system",
+          "responses": {
+            "200": {
+              "description" : "OK"
+            }
+          }
+        }
+    },
+    "/agents_by_city/{city}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "city",
+            "in": "path",
+            "required": true,
+            "description": "City of agent that we want to find",
+            "type": "string"
+          }
+        ],
+          "tags": [
+            "Orders"
+          ],
+          "summary": "Get all USA orders in system",
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          }
+        }
+    }
+},
+"definitions": {
+  "Post": {
+      "type": "object",
+      "required": ["agent_code"],
+      "properties": {
+          "agent_code": {
+              "type": "string"
+          },
+
+          "agent_name": {
+              "type": "string"
+
+          },
+          "agent_area": {
+              "type": "string"
+          },
+          "agent_commission": {
+              "type": "integer"
+          },
+          "agent_phone": {
+            "type": "string"
+        },
+        "agent_country": {
+          "type": "string"
+      } 
+    }
+  },
+  "PatchPost": {
+      "type": "object",
+      "properties": {
+          "agent_name": {
+              "type": "string"
+          }
+    }
+  }
+}
+}
