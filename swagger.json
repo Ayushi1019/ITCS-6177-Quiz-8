@@ -73,7 +73,7 @@
               "description": "Add Agent",
               "required": true,
               "schema": {
-                  "$ref": "#/definitions/Post"
+                  "$ref": "#/definitions/Req"
               }
           }
       ],
