@@ -46,7 +46,7 @@
               "in": "body",
               "description": "Patch Update Agent",
               "schema": {
-                  "$ref": "#/definitions/PatchPost"
+                  "$ref": "#/definitions/PatchReq"
               }
           }
       ],
@@ -98,7 +98,7 @@
               "description": "Update Agent",
               "required": true,
               "schema": {
-                  "$ref": "#/definitions/Post"
+                  "$ref": "#/definitions/Req"
               }
           }
       ],
@@ -197,7 +197,7 @@
     }
 },
 "definitions": {
-  "Post": {
+  "Req": {
       "type": "object",
       "required": ["agent_code"],
       "properties": {
@@ -223,7 +223,7 @@
       } 
     }
   },
-  "PatchPost": {
+  "PatchReq": {
       "type": "object",
       "properties": {
           "agent_name": {
